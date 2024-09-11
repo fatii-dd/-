@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: backend
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port 8000"
+    plan: free
+    regions:
+      - oregon
+    branches:
+      - main
+
+# type: ระบุประเภทของบริการ เป็น web เพราะเราต้องการให้เป็นบริการเว็บที่สามารถรับคำขอ HTTP
+# name: ตั้งชื่อบริการ
+# env: ระบุสภาพแวดล้อมเป็น python
+# buildCommand: คำสั่งในการติดตั้ง dependencies จาก requirements.txt
+# startCommand: คำสั่งในการรัน FastAPI ด้วย uvicorn
+# plan: เลือกแผนบริการ (ฟรี, หรือแผนที่จ่ายเงินตามที่ต้องการ)
+# regions: ระบุภูมิภาคที่ต้องการ
+# branches: ระบุ branch ที่จะ deploy (เช่น main)
